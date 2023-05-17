@@ -1,7 +1,7 @@
 class Hirsipuu:
     def __init__(self, sana: str):
         self.__sana = sana
-        self.__arvauksia = 5
+        self.__arvauksia = 6
 
     # korvaa arvaamattomat kirjaimet viivoilla
     def sana_piilotus(self, sana: str, arvatut: list):
@@ -13,8 +13,61 @@ class Hirsipuu:
                 piilotettu += "_"
         return piilotettu
     
+    #Funktio joka piirtää hirsiukon arvausten määrän mukaan
+    def piirra_ukko(self, arvaukset):
+        if arvaukset == 0:
+            print("________      ")
+            print("|      |      ")
+            print("|             ")
+            print("|             ")
+            print("|             ")
+            print("|             ")
+        elif arvaukset == 1:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|             ")
+            print("|             ")
+            print("|             ")
+        elif arvaukset == 2:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|     /       ")
+            print("|             ")
+            print("|             ")
+        elif arvaukset == 3:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|     /|      ")
+            print("|             ")
+            print("|             ")
+        elif arvaukset == 4:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|     /|\     ")
+            print("|             ")
+            print("|             ")
+        elif arvaukset == 5:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|     /|\     ")
+            print("|     /       ")
+            print("|             ")
+        else:
+            print("________      ")
+            print("|      |      ")
+            print("|      0      ")
+            print("|     /|\     ")
+            print("|     / \     ")
+            print("|             ")
+    
     # arvaa kirjaimia kunnes sana on arvattu tai arvaukset loppuvat
     def pelaa(self):
+        arvaukset = 0
         kirjaimet = "abcdefghijklmnopqrstuvwxyzåäö"
         arvatut = []
 
@@ -41,11 +94,10 @@ class Hirsipuu:
             else:
                 print("Ei löydy")
                 self.__arvauksia -= 1
+                arvaukset += 1
+                self.piirra_ukko(arvaukset)
                 if self.__arvauksia == 0:
                     print(":(")   # häviö
                     break
 
 
-"""# testausta
-hp = Hirsipuu("sana")
-hp.pelaa()"""
